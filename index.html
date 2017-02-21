@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body>
+
+<div class="warp">
+    <div class="list">
+    </div>
+</div>
+<script type="text/javascript">
+
+
+    var obj = {
+        box: $(".list"),
+        list: $(".list-c"),
+        item: 13,
+        length: 4,
+        fn: function () {
+            $(".list-c").fadeIn(800);
+        }
+    };
+
+    var model = {
+        isScrolling: false,
+        newClass: function (obj) {
+            obj = obj || {};
+            if (this.isScrolling == false) {
+                this.init.prototype = model;
+                this.isScrolling = true;
+            }
+            return new this.init(obj);
+        },
+        init: function (ele) {
+            var _this = this;
+            this.box = ele.box;
+            this.list = ele.list;
+            this.item = ele.item;
+            this.length = ele.length;
+            this.height = $("body").height();
+            this.fn = ele.fn;
+            this.bindTouch();
+            this.nexts();
+        },
+        bindTouch: function () {
+            var _this = this;
+            $(window).scroll(function () {
+                if ($(window).scrollTop() + $(window).height() > $(".c00:last").offset().top) {
+                    _this.next();
+                }
+            });
+        },
+        next: function () {
+            var _this = this;
+            $.ajax({
+                type: "GET",
+                url: "data/2.txt",
+                dataType: "json",
+                success: function (data) {
+                    var top;
+                    for (var i = 0; i < data.length; i++) {
+                        var s = i % 4;
+                        var ele = $(".c0" + s + ":last");
+                        top = ele.offset().top + ele.outerHeight() + 20;
+                        _this.data(s, data[i].title, data[i].img, data[i].font, top);
+                        _this.fn();
+                    }
+                }
+            });
+        },
+        nexts: function () {
+            var _this = this;
+            $.ajax({
+                type: "GET",
+                url: "data/text",
+                dataType: "json",
+                success: function (data) {
+                    var top;
+                    for (var i = 0; i < data.length; i++) {
+                        var s = i % 4;
+                        if (i < 4) {
+                            top = 0;
+                        } else {
+                            var ele = $(".c0" + s + ":last");
+                            top = ele.offset().top + ele.outerHeight() + 20;
+                        }
+                        _this.data(s, data[i].title, data[i].img, data[i].font, top);
+                        _this.fn();
+                    }
+                }
+            });
+        },
+        data: function (num, title, img, font, top) {
+            $('<div></div>', {
+                class: 'list-c c0' + num,
+                html: "<h2>" + title + "</h2><p>" + img + "</p><img src='images/pho5.jpg'><p>" + font + "</p> "
+            }).css({top: top, height: this.num()}).appendTo($(this.box));
+        },
+        num: function () {
+            return Math.floor(Math.random() * 300 + 350)
+        }
+    };
+
+    window.onload = function () {
+        model.newClass(obj);
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+@charset "utf-8";
+body, ul, dl, dd, dt, ol, li, p, h1, h2, h3, h4, h5, h6, textarea, form, select, fieldset, table, td, div, input {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-family: 微软雅黑, Arail, sans-serif;
+    color: #333333;
+}
+
+body > div {
+    margin: 0 auto
+}
+
+div {
+    text-align: left
+}
+
+a img {
+    border: 0
+}
+
+body {
+    color: #333;
+    font: 14px 微软雅黑, Arail, sans-serif;
+}
+
+ul, ol, li {
+    list-style-type: none;
+    vertical-align: 0
+}
+
+a {
+    outline-style: none;
+    color: #535353;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #D40000;
+    text-decoration: none
+}
+
+.clear {
+    clear: both
+}
+
+p {
+    line-height: 1.5em;
+    color: #333333;
+    font-family: 微软雅黑, Arail, sans-serif;
+}
+
+span {
+    line-height: 1.5em;
+    color: #333333;
+    font-family: 微软雅黑, Arail, sans-serif;
+}
+
+button {
+    font-family: 微软雅黑, Arail, sans-serif;
+    outline: none;
+}
+
+input {
+    outline: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+
+
+.warp{ width: 1000px; margin: 0 auto; position: relative;}
+
+.list-c{ width:240px; border: 1px solid #ccc;  position: absolute; top:0; display: none;}
+.list-c img{ width: 100%;}
+.c00{ left:0;}
+.c01{ left:250px;}
+.c02{ left:500px;}
+.c03{ left:750px; }
+
+
